@@ -1,0 +1,14 @@
+{
+  "algorithm": "max-abs-all-channels.v1",
+  "assetSha256": "a2356f5a1cbe910479952492ad82cd27bb9a10672a6c945c4de6d21db28799ea",
+  "bucketCount": 192,
+  "channels": 1,
+  "durationMs": 1000,
+  "encoding": "u8-base64url",
+  "frameCount": 44100,
+  "maxAmplitude": 0.79998779,
+  "normalization": "asset-peak",
+  "payload": "OTo6Ojo7PDw-Pj9BQkNERkhJTE5PUVRWWFtdX2JlZ2ptcHN2eXx-goWIjI-SlJmbnqOlqKuvsrW5u77CxcfKzdDS1tja3ODi5Obo6uzu8PHz9fb3-fn6_Pz9_v7-_________v7-_fz8-vn59_b18_Hw7uzq6Obk4uDc2tjW0tDNysfFwr67ubWyr6uopaOem5mUko-MiIWCfnx5dnJwbWpnZWJfXVtYVlRRT05MSUhGRENCQT8-Pjw8Ozo6Ojo5",
+  "sampleRateHz": 44100,
+  "version": "audio-peaks.v1"
+}

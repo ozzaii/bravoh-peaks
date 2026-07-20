@@ -1,0 +1,29 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      - name: CLI smoke (byte-match against a golden)
+        shell: bash
+        run: |
+          node dist/cli.js test/fixtures/mono-sine.wav > out.json
+          node -e "const fs=require('node:fs');const assert=require('node:assert');const a=JSON.parse(fs.readFileSync('out.json','utf8'));const b=JSON.parse(fs.readFileSync('test/golden/mono-sine.json','utf8'));assert.deepStrictEqual(a,b);console.log('ok')"

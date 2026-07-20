@@ -1,0 +1,60 @@
+{
+  "name": "bravoh-peaks",
+  "version": "0.1.0",
+  "description": "Generate, encode, decode & render SoundCloud-style audio waveform peaks. Zero dependencies, one tiny self-describing format, browser + Node + CLI. Byte-for-byte reproducible against a Python reference.",
+  "keywords": [
+    "waveform",
+    "peaks",
+    "audio",
+    "soundcloud",
+    "wav",
+    "svg",
+    "visualization",
+    "dsp",
+    "typescript",
+    "zero-dependencies"
+  ],
+  "homepage": "https://github.com/ozzaii/bravoh-peaks#readme",
+  "bugs": "https://github.com/ozzaii/bravoh-peaks/issues",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ozzaii/bravoh-peaks.git"
+  },
+  "license": "MIT",
+  "author": "BRAVOH (https://bravoh.ai)",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "bravoh-peaks": "./dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "assets"
+  ],
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsup",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.7.0",
+    "vitest": "^3.2.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
