@@ -1,3 +1,4 @@
+import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { decodeWav, peaksFromWav } from "../src/wav.js";
 
@@ -55,6 +56,19 @@ describe("decodeWav", () => {
     expect(decoded.channels).toHaveLength(2);
     expect(decoded.channels[0]![0]).toBeCloseTo(0.5, 4);
     expect(decoded.channels[1]![0]).toBeCloseTo(-0.5, 4);
+  });
+
+  it("reads signed 24-bit extensible PCM after an odd-sized padded chunk", () => {
+    const wav = readFileSync(new URL("./fixtures/extensible-pcm24.wav", import.meta.url));
+    const decoded = decodeWav(wav);
+    expect(decoded.sampleRateHz).toBe(48_000);
+    expect(decoded.frameCount).toBe(3);
+    expect(decoded.channels.map((channel) => Array.from(channel))).toEqual([
+      [-1, -1 / 8388608, 0],
+      [8388607 / 8388608, 1 / 8388608, -0.5],
+    ]);
+    const receipt = JSON.parse(readFileSync(new URL("./golden/extensible-pcm24.json", import.meta.url), "utf8"));
+    expect(peaksFromWav(wav)).toEqual(receipt);
   });
 
   it("reads IEEE float32 WAV", () => {

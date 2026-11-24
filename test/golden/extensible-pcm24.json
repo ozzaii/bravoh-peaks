@@ -1,0 +1,14 @@
+{
+  "version": "audio-peaks.v1",
+  "algorithm": "max-abs-all-channels.v1",
+  "sampleRateHz": 48000,
+  "channels": 2,
+  "frameCount": 3,
+  "durationMs": 0,
+  "bucketCount": 3,
+  "encoding": "u8-base64url",
+  "normalization": "asset-peak",
+  "maxAmplitude": 1,
+  "payload": "_wCA",
+  "assetSha256": "b9aca000181b3b681604413544eb2bf193850d0544b4005eb6b12c7bc8910fcf"
+}
